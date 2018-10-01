@@ -1,5 +1,5 @@
 'use strict';
-/* global shoppingList, cuid, Item */
+/* global cuid, Item */
 const store = (function (){
     
   const items = [
@@ -11,8 +11,8 @@ const store = (function (){
   const hideCheckedItems = false ;
   const searchTerm = '';
 
-  const findByID = function(id){
-    return store.items.find(id);
+  const findByID = function(itemID){
+    return store.items.find(item => item.id ===itemID);
   };
 
   const addItem = function(name){
@@ -32,8 +32,8 @@ const store = (function (){
     this.findByID(id).name = newName;
   };
 
-  const findAndDelete = function(id){
-    const itemIndex = this.items.findIndex(id => id === id);
+  const findAndDelete = function(itemID){
+    const itemIndex = this.items.findIndex(item => item.id === itemID);
     store.items.splice(itemIndex,1);
   };
 
